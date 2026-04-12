@@ -8,7 +8,6 @@ import "swiper/css/navigation";
 
 import carousel1 from "../assets/images/carousel_1.jpg"
 import carousel2 from "../assets/images/carousel_2.jpg"
-import carousel3 from "../assets/images/carousel_3.jpg"
 import carousel4 from "../assets/images/carousel_4.jpg"
 import carousel5 from "../assets/images/carousel_5.jpg"
 import carouselVideo from "../assets/videos/carousel_vid.mp4"
