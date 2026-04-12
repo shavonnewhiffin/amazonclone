@@ -7,7 +7,7 @@ const NavBar = () => {
   return (
     <header className="min-w-[1000px]">
       <div className="flex bg-[var(--color-primary)] text-white h-[60px]">
-        {/* Left */}
+        {/* NavBar Left */}
         <div className="flex items-center m-4">
           {/* Amazon Logo */}
           <Link to={"/"}>
@@ -19,12 +19,12 @@ const NavBar = () => {
           </div>
         </div>
 
-        {/* Middle */}
+        {/* NavBar Middle */}
         <div className="flex grow relative items-center">
           <Search />
         </div>
 
-        {/* Right */}
+        {/* NavBar Right */}
         <div className="flex items-center m-4">
           <div className="pr-4 pl-4">
             <div className="text-xs xl:text-sm">Hello, sign in</div>
