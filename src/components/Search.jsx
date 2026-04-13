@@ -16,6 +16,7 @@ const navigate = useNavigate();
 // Function to search when user clicks search button
 const onHandleSumbit = (e) => {
 e.preventDefault();
+console.log("Submit worked");
 
 navigate({
     pathname: "/search",
@@ -45,7 +46,7 @@ getSuggestions();
 
   return (
     <div className="w-[100%]">
-      <div className="flex items-center w-full h-10 bg-[var(--color-yellow)] rounded">
+   <form onSubmit={onHandleSumbit} className="flex items-center w-full h-10 bg-[var(--color-yellow)] rounded">
         <select name="" className="p-2 bg-gray-300 text-black h-full text-xs xl:text-sm rounded-r" id="" onChange={(e) => setCategory(e.target.value)}>
             <option value="All">All</option>
             <option value="Deals">Deals</option>
@@ -62,10 +63,10 @@ getSuggestions();
           placeholder="Search..."
           value={searchTerm}
         />
-        <button onClick={onHandleSumbit} className="w-[45px]">
+        <button type="submit" className="w-[45px]">
         <MagnifyingGlassIcon className="h-[27px] m-auto stroke-slate-900"/>
         </button>
-      </div>
+        </form>
       {
         suggestions && 
         <div>
@@ -82,10 +83,23 @@ getSuggestions();
                     })
                     .slice(0, 10)
                     .map((suggestion)=> (
-                        <div key={suggestion.id}className="" onClick={() => setSearchTerm(suggestion.title)}>
-                            {suggestion.title}
+                        <div
+                          key={suggestion.id}
+                          onClick={() => {
+                            setSearchTerm(suggestion.title);
+                    //   Send user to search result page once the result is selected from the dropdown
+                            navigate({
+                              pathname: "/search",
+                              search: `${createSearchParams({
+                                category: category,
+                                searchTerm: suggestion.title
+                              })}`
+                            });
+                          }}
+                        >
+                          {suggestion.title}
                         </div>
-                    ))
+                      ))
                 }
             </div>
         </div>

@@ -8,6 +8,7 @@ import home7 from "../images/home_grid_7.jpg";
 import home8 from "../images/home_grid_8.jpg";
 import banner1 from "../images/banner_image.jpg";
 import banner2 from "../images/banner_image_2.jpg";
+import category0 from "../images/category_0.jpg";
 import category1 from "../images/category_1.jpg";
 import category2 from "../images/category_2.jpg";
 import category3 from "../images/category_3.jpg";
@@ -33,6 +34,7 @@ banner2,
 }
 
 export const categories = {
+    category0,
     category1,
     category2,
     category3,

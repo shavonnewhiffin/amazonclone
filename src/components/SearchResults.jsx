@@ -1,51 +1,61 @@
-import { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { ProductDetails } from "./";
 import { callAPI } from "../utils/CallApi";
+import { US_CURRENCY } from "../utils/Constants";
 
 const SearchResults = () => {
-  // Retrieving the params based off the search in Search.jsx
   const [searchParams] = useSearchParams();
+  const [products, setProducts] = useState(null);
 
-  const [products, setProducts] = useState([]);
-
-  // Retrieve products based on search params
   const getSearchResults = () => {
     const searchTerm = searchParams.get("searchTerm");
     const category = searchParams.get("category");
 
-    callAPI(`data/search.json`)
-      // Retrieve products for the category, filter each product, make each product lowercase and check if it includes the search term, then set products to the filtered results
-      .then((searchResults) => {
-        const searchTerm = searchParams.get("searchTerm") || "";
-        const category = searchParams.get("category") || "All";
+    callAPI(`data/search.json`).then((searchResults) => {
+        const baseProducts =
+        category === "All"
+          ? searchResults["All"]
+          : searchResults[category];
       
-        const categoryResults = searchResults[category] || [];
+      const results = searchTerm
+        ? baseProducts.filter((product) =>
+            product.title.toLowerCase().includes(searchTerm.toLowerCase())
+          )
+        : baseProducts;
       
-        const results = searchTerm
-          ? categoryResults.filter((product) =>
-              product.title.toLowerCase().includes(searchTerm.toLowerCase())
-            )
-          : categoryResults;
-      
-        setProducts(results);
-        console.log("CATEGORY:", category);
-console.log("DATA:", searchResults);
-console.log("RESULT:", searchResults[category]);
+      setProducts(results);
       });
-  };
-
+    ;
+  }
   useEffect(() => {
     getSearchResults();
   }, [searchParams]);
 
   return (
-    <div className="min-w-[1200px] max-w-[1300px] m-auto">
-      {
+    <div className="min-w-[1200px] max-w-[1300px] m-auto pt-4">
+      {products &&
         products.map((product, key) => {
           return (
-            <div className="" key={key}>
-              {product.title}
-            </div>
+            <Link key={key} to={`/product/${product.id}`}>
+              <div className="h-[250px] grid grid-cols-12 rounded mt-1 mb-1 ">
+                <div className="col-span-2 p-4 bg-gray-200">
+                  <img
+                    className="m-auto"
+                    src={product.image_small}
+                    alt="Search result product"
+                  />
+                </div>
+                <div className="col-span-10 bg-gray-50 border border-gray-100 hover:bg-gray-100 ">
+                  <div className="font-medium text-black p-2">
+                    <ProductDetails product={product} ratings={true} />
+                    <div className="text-xl xl:text-2xl pt-1">
+                      {US_CURRENCY.format(product.price)}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
           );
         })}
     </div>
