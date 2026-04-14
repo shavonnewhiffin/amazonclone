@@ -1,66 +1,96 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { useParams, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { ProductDetails } from "./";
+import { US_CURRENCY } from "../utils/Constants";
+import { callAPI } from "../utils/CallApi";
+import { addToCart } from "../redux/cartSlice";
 
-const initialState = {
-  products: [],
-  productsNumber: 0,
+const ProductPage = () => {
+  const { id } = useParams();
+  const [product, setProduct] = useState(null);
+  const [quantity, setQuantity] = useState("1");
+  const dispatch = useDispatch();
+
+  const getProduct = () => {
+    callAPI(`data/products.json`).then((productResults) => {
+      setProduct(productResults[id]);
+    });
+  };
+
+  const addQuantityToProduct = () => {
+    setProduct((product.quantity = quantity));
+    return product;
+  };
+
+  useEffect(() => {
+    getProduct();
+  }, []);
+
+  if (!product?.title) return <h1>Loading Product ...</h1>;
+
+  return (
+    product && (
+      <div className="h-screen bg-amazonclone-background">
+        <div className="min-w-[1000px] max-w-[1500px] m-auto p-4">
+          <div className="grid grid-cols-10 gap-2">
+            {/* Left */}
+            <div className="col-span-3 p-8 rounded bg-white m-auto">
+              <img src={`${product.image}`} alt="Main product" />
+            </div>
+            {/* Middle */}
+            <div className="col-span-5 p-4 rounded bg-white divide-y divide-gray-400">
+              <div className="mb-3">
+                <ProductDetails product={product} ratings={true} />
+              </div>
+              <div className="text-base xl:text-lg mt-3">
+                {product.description}
+              </div>
+            </div>
+            {/* Right */}
+            <div className="col-span-2 p-4 rounded bg-white">
+              <div className="text-xl xl:text-2xl text-red-700 text-right font-semibold">
+                {US_CURRENCY.format(product.price)}
+              </div>
+              <div className="text-base xl:text-lg text-gray-500 text-right font-semibold">
+                RRP:{" "}
+                <span className="line-through">
+                  {US_CURRENCY.format(product.oldPrice)}
+                </span>
+              </div>
+              <div className="text-sm xl:text-base text-blue-500 font-semibold mt-3">
+                FREE Returns
+              </div>
+              <div className="text-sm xl:text-base text-blue-500 font-semibold mt-1">
+                FREE Delivery
+              </div>
+              <div className="text-base xl:text-lg text-green-700 font-semibold mt-1">
+                In Stock
+              </div>
+              <div className="text-base xl:text-lg mt-1">
+                Quantity:
+                <select
+                  onChange={(e) => setQuantity(e.target.value)}
+                  className="p-2 ml-1 bg-white border rounded-md focus:border-indigo-600"
+                >
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                </select>
+              </div>
+              <Link to={"/checkout"}>
+                <button
+                  onClick={() => dispatch(addToCart(addQuantityToProduct()))}
+                className="bg-yellow-400 w-full p-3 text-xs xl:text-sm rounded hover:bg-yellow-500 mt-3">
+                  Add to Cart
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  );
 };
 
-export const cartSlice = createSlice({
-  name: "cart",
-  initialState,
-  reducers: {
-    addToCart: (state, action) => {
-      // check if in product array
-      const addProductExists = state.products.find(
-        (product) => product.id === action.payload.id
-      );
-      if (addProductExists) {
-        addProductExists.quantity += parseInt(action.payload.quantity);
-      } else {
-        state.products.push({
-          ...action.payload,
-          quantity: parseInt(action.payload.quantity),
-        });
-      }
-      state.productsNumber =
-        state.productsNumber + parseInt(action.payload.quantity);
-    },
-    removeFromCart: (state, action) => {
-      // find the product removing the array
-      const productToRemove = state.products.find(
-        (product) => product.id === action.payload
-      );
-      // remove the quantity from product number
-      state.productsNumber = state.productsNumber - productToRemove.quantity;
-      // find index of the product removing
-      const index = state.products.findIndex(
-        (product) => product.id === action.payload
-      );
-      // remove from the array
-      state.products.splice(index, 1);
-    },
-    incrementInCart: (state, action) => {
-      const itemInc = state.products.find((item) => item.id === action.payload);
-      if (itemInc.quantity >= 1) {
-        itemInc.quantity = itemInc.quantity + 1;
-      }
-      state.productsNumber = state.productsNumber + 1;
-    },
-    decrementInCart: (state, action) => {
-      const itemDec = state.products.find((item) => item.id === action.payload);
-      if (itemDec.quantity === 1) {
-        const index = state.products.findIndex(
-          (item) => item.id === action.payload
-        );
-        state.products.splice(index, 1);
-      } else {
-        itemDec.quantity--;
-      }
-      state.productsNumber = state.productsNumber - 1;
-    },
-  },
-});
-
-export const { addToCart, removeFromCart, incrementInCart, decrementInCart } =
-  cartSlice.actions;
-export default cartSlice.reducer;
+export default ProductPage;
