@@ -30,6 +30,21 @@ const CarouselCategory = () => {
         spaceBetween={10}
         navigation={true}
         modules={[Navigation]}
+        breakpoints={{
+            0: {
+              slidesPerView: 2,
+            },
+            480: {
+              slidesPerView: 3,
+            },
+            768: {
+              slidesPerView: 5,
+            },
+            1024: {
+              slidesPerView: 6,
+            },
+          }}
+            wrapperClass="px-2"
       >
         <SwiperSlide onClick={() => searchCategory("Deals")} className="cursor-pointer">
           <img src={categories.category0} alt="" />

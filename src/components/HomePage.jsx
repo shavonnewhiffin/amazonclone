@@ -1,8 +1,13 @@
 import React from "react";
-import { Carousel, HomePageCard, CarouselCategory, CarouselProduct } from "./index";
+import {
+  Carousel,
+  HomePageCard,
+  CarouselCategory,
+  CarouselProduct,
+} from "./index";
+
 import { images } from "../assets/images/index";
 import { banners } from "../assets/images/index";
-
 
 const HomePageCards = [
   {
@@ -50,25 +55,45 @@ const HomePageCards = [
 const HomePage = () => {
   return (
     <div className="bg-[var(--color-background)]">
-      <div className="max-w-[1500px] w-full m-auto">
+      <div className="max-w-[1500px] mx-auto">
+        {/* HERO */}
         <Carousel />
-        <div className="grid grid-cols-3 xl:grid-cols-4 -mt-80">
-          {HomePageCards.map((card, index) => (
-            <HomePageCard
-              key={index}
-              title={card.title}
-              img={card.img}
-              link={card.link}
-            />
-          ))}
-          <div className="m-3 pt-8">
-            <img className="xl:hidden"src={banners.banner2} alt="" />
+
+        {/* GRID SECTION (KEEP OVERLAP HACK) */}
+        <div className="relative z-10 px-4 -mt-80">
+          <div className="grid grid-cols-1 xs:grid-cols-3 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
+            {HomePageCards.map((card, index) => (
+              <HomePageCard key={index} {...card} />
+            ))}
+
+            {/* BANNER 2 INSIDE GRID (SAFE VERSION) */}
+            <div className="hidden md:block xl:hidden m-3 pt-8 self-start">
+              <img
+                src={banners.banner2}
+                alt=""
+                className="w-full h-auto object-cover"
+              />
+            </div>
           </div>
         </div>
-        <CarouselProduct />
-        <CarouselCategory />
-        <div className="h-[200px]">
-          <img className="h-[100%] m-auto" src={banners.banner1} alt="" />
+
+        {/* PRODUCT CAROUSEL */}
+        <div className="mt-10">
+          <CarouselProduct />
+        </div>
+
+        {/* CATEGORY */}
+        <div className="mt-10">
+          <CarouselCategory />
+        </div>
+
+        {/* BANNER 1 */}
+        <div className="mt-10 px-4">
+          <img
+            src={banners.banner1}
+            alt=""
+            className="w-full aspect-[21/5] object-cover"
+          />
         </div>
       </div>
     </div>
