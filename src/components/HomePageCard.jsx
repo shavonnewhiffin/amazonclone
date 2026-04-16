@@ -15,7 +15,7 @@ const HomePageCard = ({ title, img, link }) => {
           />
         </div>
   
-        <div className="text-xs xl:text-sm text-blue-400 ml-4">
+        <div className="text-xs xl:text-sm text-blue-400 ml-4 mb-2">
           {link}
         </div>
       </div>

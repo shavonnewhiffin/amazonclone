@@ -60,8 +60,8 @@ const HomePage = () => {
         <Carousel />
 
         {/* GRID SECTION (KEEP OVERLAP HACK) */}
-        <div className="relative z-10 px-4 -mt-80">
-          <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="relative z-10 px-4 -mt-[25vh] sm:-mt-[30vh] md:-mt-[300px]">
+          <div className="grid grid-cols-2 max-sm:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
             {HomePageCards.map((card, index) => (
               <HomePageCard key={index} {...card} />
             ))}
