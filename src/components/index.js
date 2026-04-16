@@ -11,3 +11,4 @@ export { default as Checkout } from './Checkout';
 export { default as ProductDetails } from './ProductDetails';
 export { default as ProductBadge } from './ProductBadge';
 export { default as ProductRatings } from './ProductRatings';
+export { default as FeatureSlides } from './FeatureSlides';
