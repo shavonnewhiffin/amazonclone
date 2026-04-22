@@ -28,10 +28,10 @@ const Carousel = () => {
         onSwiper={(swiper) => (swiperRef.current =swiper)} 
         >
 <SwiperSlide>
-    <img src={carousel1} alt="" />
+    <img src={carousel1} alt="" className="object-cover w-full" />
 </SwiperSlide>
 <SwiperSlide>
-    <img src={carousel2} alt="" />
+    <img src={carousel2} alt="" className="object-cover w-full" />
 </SwiperSlide>
 <SwiperSlide>
    <video 
@@ -45,11 +45,11 @@ const Carousel = () => {
     <source src={carouselVideo} type="video/mp4"/>
    </video>
 </SwiperSlide>
-<SwiperSlide>
-    <img src={carousel4} alt="" />
+<SwiperSlide>    
+<img src={carousel4} alt="" className="object-cover w-full" />
 </SwiperSlide>
 <SwiperSlide>
-    <img src={carousel5} alt="" />
+    <img src={carousel5} alt="" className="object-cover w-full" />
 </SwiperSlide>
         </Swiper>
         <div className="h-[50%] bg-gradient-to-b from-stone-900"></div>
