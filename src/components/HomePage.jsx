@@ -4,12 +4,13 @@ import {
   HomePageCard,
   CarouselCategory,
   CarouselProduct,
+  FeatureSlides,
 } from "./index";
 
 import { images } from "../assets/images/index";
 import { banners } from "../assets/images/index";
 
-const HomePageCards = [
+export const HomePageCards = [
   {
     title: "We have a surprise for you",
     img: images.home1,
@@ -56,17 +57,21 @@ const HomePage = () => {
   return (
     <div className="bg-[var(--color-background)]">
       <div className="max-w-[1500px] mx-auto">
-        {/* HERO */}
+        {/* HERO CAROUSEL */}
         <Carousel />
 
-        {/* GRID SECTION (KEEP OVERLAP HACK) */}
-        <div className="relative z-10 px-4 -mt-[25vh] sm:-mt-[30vh] md:-mt-[300px]">
-          <div className="grid grid-cols-2 max-sm:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
+        {/* CARDS — overlap the carousel using negative margin */}
+        {/* On screens 640px and under display FeatureSlides component*/}
+        <FeatureSlides className="block sm:hidden" />
+
+        {/* On screens above 640px display grid format for features */}
+        <div className="hidden sm:block relative z-20 px-4 -mt-[80px] sm:-mt-[100px] md:-mt-[120px] xl:-mt-[140px]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
             {HomePageCards.map((card, index) => (
               <HomePageCard key={index} {...card} />
             ))}
 
-            {/* BANNER 2 INSIDE GRID (SAFE VERSION) */}
+            {/* Grid Banner Ad — only visible between md and xl */}
             <div className="hidden md:block xl:hidden m-3 pt-8 self-start">
               <img
                 src={banners.banner2}
@@ -87,7 +92,7 @@ const HomePage = () => {
           <CarouselCategory />
         </div>
 
-        {/* BANNER 1 */}
+        {/* FOOTER BANNER */}
         <div className="mt-10 px-4">
           <img
             src={banners.banner1}
