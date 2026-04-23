@@ -46,7 +46,7 @@ getSuggestions();
 
   return (
     <div className="w-[100%]">
-   <form onSubmit={onHandleSumbit} className="flex items-center w-full h-10 bg-[var(--color-yellow)] rounded">
+   <form onSubmit={onHandleSumbit} className="min-w-0 flex items-center w-full h-10 bg-[var(--color-yellow)] rounded">
         <select name="" className="hidden lg:block p-2 bg-gray-300 text-black h-full text-xs xl:text-sm rounded-l" id="" onChange={(e) => setCategory(e.target.value)}>
             <option value="All">All</option>
             <option value="Deals">Deals</option>

@@ -9,7 +9,7 @@ const NavBar = () => {
   const cart = useSelector((state) => state.cart.productsNumber);
 
   return (
-    <header className="overflow-x-auto">
+    <header className="">
       <div className="flex bg-[var(--color-primary)] text-white h-[60px]">
 
         {/* NAV LEFT: Logo + Delivery location */}
@@ -21,12 +21,12 @@ const NavBar = () => {
               src="/amazon.png"
               alt="Amazon"
             />
-            </figure>
+          </figure>
           </Link>
           {/* Only visible on large screens */}
-          <div className="pr-4 pl-4">
-            <div className="hidden lg:block text-xs xl:text-sm">Deliver to</div>
-            <div className="hidden lg:block text-sm xl:text-base font-bold">United States</div>
+          <div className="pr-1 pl-1 lg:pr-4 lg:pl-1 hidden lg:block">
+            <div className="text-xs xl:text-sm">Deliver to</div>
+            <div className="text-sm xl:text-base font-bold">United States</div>
           </div>
         </div>
 
@@ -37,31 +37,33 @@ const NavBar = () => {
         </div>
 
         {/* NAV RIGHT: Sign in, Orders, Cart */}
-        <div className="flex items-center m-4 ml-auto">
+        <div className="flex items-center m-2 lg:m-4 ml-auto">
 
           {/* Sign In / Accounts & Lists */}
-          <div className="pr-4 pl-4 ml-4">
+          <div className="pr-4 pl-4">
             {/* Desktop: two-line layout */}
-            <div className="hidden lg:block text-xs xl:text-sm">Hello, sign in</div>
-            <div className="hidden lg:block text-sm xl:text-base font-bold cursor-pointer">
+            <div className="hidden lg:block">
+            <div className="hidden text-xs xl:text-sm">Hello, sign in</div>
+            <div className="hidden text-sm xl:text-base font-bold cursor-pointer">
               Accounts & Lists
+              </div>
             </div>
             {/* Mobile: icon + label side by side */}
             <div className="flex items-center gap-2 lg:hidden">
-              <UserIcon className="h-[24px]" />
-              <div className="text-xs md:text-sm font-bold mt-7">Sign In</div>
+              <UserIcon className="h-[24px] hidden md:block" />
+              <div className="text-[10px] sm:text-xs md:text-sm font-bold whitespace-nowrap">Sign In</div>
             </div>
           </div>
 
           {/* Returns & Orders — desktop only */}
-          <div className="pr-4 pl-4">
-            <div className="hidden lg:block text-xs xl:text-sm cursor-pointer">Returns</div>
-            <div className="hidden lg:block text-sm xl:text-base font-bold cursor-pointer">& Orders</div>
+          <div className="pr-4 pl-4 hidden lg:block">
+            <div className="text-xs xl:text-sm cursor-pointer">Returns</div>
+            <div className="text-sm xl:text-base font-bold cursor-pointer">& Orders</div>
           </div>
 
           {/* Cart — always visible */}
           <Link to={"/checkout"} className="cursor-pointer">
-            <div className="flex pr-3 pl-3">
+            <div className="flex pr-1 pl-1">
               <ShoppingCartIcon className="h-[48px]" />
               {/* Cart item count — positioned top-right of the icon */}
               <div className="relative">
