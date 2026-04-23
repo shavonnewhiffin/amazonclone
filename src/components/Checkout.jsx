@@ -23,11 +23,11 @@ const Checkout = () => {
   }
 
   return (
-    <div className="h-screen bg-amazonclone-background">
-      <div className="min-w-[1000px] max-w-[1500px] m-auto pt-8">
-        <div className="grid grid-cols-8 gap-10">
+    <div className="min-h-screen bg-amazonclone-background">
+      <div className="max-w-[1500px] m-auto pt-8 px-4">
+        <div className="grid grid-cols-1 lg:grid-cols-8 gap-6">
           {/* Products */}
-          <div className="col-span-6 bg-white">
+          <div className="lg:col-span-6 bg-white">
             <div className="text-2xl xl:text-3xl m-4">Shopping Cart</div>
             {products.map((product) => {
               return (
@@ -57,7 +57,7 @@ const Checkout = () => {
                             Delete
                           </button>
                         </div>
-                        <div className="grid grid-cols-3 w-20 text-center">
+                        <div className="grid grid-cols-3 w-20 text-center mb-4">
                           <div
                             className="text-xl xl:text-2xl bg-gray-400 rounded cursor-pointer"
                             onClick={() =>
@@ -97,10 +97,10 @@ const Checkout = () => {
             </div>
           </div>
           {/* Checkout */}
-          <div className="col-span-2 bg-white rounded h-[250px] p-7">
+          <div className="lg:col-span-2 bg-white rounded p-7">
             <div className="text-xs xl:text-sm text-green-800 mb-2">
               Your order qualifies for{" "}
-              <span className="font-bold">FREE DELIVERY</span>. Delivery Details
+              <span className="font-bold">FREE DELIVERY</span>.
             </div>
             <div className="text-base xl:text-lg mb-4">
               Subtotal ({itemsNumber} items):{" "}

@@ -2,7 +2,7 @@ import React from 'react'
 
 const HomePageCard = ({ title, img, link }) => {
     return (
-      <div className="bg-white z-30 w-full ">
+      <div className="bg-white z-30 w-full mt-2">
         <div className="p-4">
         <div className="text-lg xl:text-xl font-semibold ml-4 mt-5 ">
           {title}
