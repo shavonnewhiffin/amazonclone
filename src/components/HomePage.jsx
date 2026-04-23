@@ -83,17 +83,17 @@ const HomePage = () => {
         </div>
 
         {/* PRODUCT CAROUSEL */}
-        <div className="mt-10">
+        <div className="mt-4 lg:mt-8">
           <CarouselProduct />
         </div>
 
         {/* CATEGORY */}
-        <div className="mt-10">
+        <div className="mt-4 lg:mt-8">
           <CarouselCategory />
         </div>
 
         {/* FOOTER BANNER */}
-        <div className="mt-10 px-4">
+        <div className="mt-4 lg:mt-8 px-4">
           <img
             src={banners.banner1}
             alt=""

@@ -15,7 +15,7 @@ const NavBar = () => {
         {/* NAV LEFT: Logo + Delivery location */}
         <div className="flex items-center m-4">
           <Link to={"/"}>
-          <figure className="flex-shrink-0">
+          <figure className="flex-shrink-0 mr-1">
             <img
               className="h-8 w-auto m-2 cursor-pointer"
               src="/amazon.png"
