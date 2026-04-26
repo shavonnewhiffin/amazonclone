@@ -5,7 +5,6 @@ import { Navigation, Autoplay } from "swiper/modules";
 import HomePageCard from "./HomePageCard";
 import { images } from "../assets/images/index";
 
-
 import "swiper/css";
 import "swiper/css/navigation";
 
@@ -52,20 +51,19 @@ const HomePageCards = [
   },
 ];
 
-
-const FeatureSlides = ( { className } ) => {
+const FeatureSlides = ({ className }) => {
   return (
     <div className={className}>
       <Swiper
-        spaceBetween={20}  // Adds space between the slides
-        loop={true}        // Enables looping of slides
-        navigation={true}  // Enables navigation arrows
+        spaceBetween={20} // Adding space between the slides
+        loop={true} // Enables looping of slides
+        navigation={true} // Enables navigation arrows
         autoplay={{
           delay: 3000, // 3 seconds for each slide
           disableOnInteraction: false, // Autoplay does not stop on user interaction
         }}
         modules={[Navigation, Autoplay]} // Swiper modules
-        >
+      >
         {HomePageCards.map((card, index) => (
           <SwiperSlide key={index}>
             <HomePageCard {...card} />

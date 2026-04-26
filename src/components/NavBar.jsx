@@ -11,17 +11,16 @@ const NavBar = () => {
   return (
     <header className="">
       <div className="flex bg-[var(--color-primary)] text-white h-[60px]">
-
         {/* NAV LEFT: Logo + Delivery location */}
         <div className="flex items-center m-1 md:m-4 flex-shrink-0">
           <Link to={"/"}>
-          <figure className="flex-shrink-0 mr-1">
-            <img
-              className="h-8 w-auto m-2 cursor-pointer"
-              src="/amazon.png"
-              alt="Amazon"
-            />
-          </figure>
+            <figure className="flex-shrink-0 mr-1">
+              <img
+                className="h-8 w-auto m-2 cursor-pointer"
+                src="/amazon.png"
+                alt="Amazon"
+              />
+            </figure>
           </Link>
           {/* Only visible on large screens */}
           <div className="pr-1 pl-1 lg:pr-4 lg:pl-1 hidden lg:block">
@@ -38,27 +37,30 @@ const NavBar = () => {
 
         {/* NAV RIGHT: Sign in, Orders, Cart */}
         <div className="flex items-center m-2 lg:m-4 ml-auto">
-
           {/* Sign In / Accounts & Lists */}
           <div className="pr-4 pl-4">
             {/* Desktop: two-line layout */}
             <div className="hidden lg:block">
-            <div className="hidden text-xs xl:text-sm">Hello, sign in</div>
-            <div className="hidden text-sm xl:text-base font-bold cursor-pointer">
-              Accounts & Lists
+              <div className="hidden text-xs xl:text-sm">Hello, sign in</div>
+              <div className="hidden text-sm xl:text-base font-bold cursor-pointer">
+                Accounts & Lists
               </div>
             </div>
             {/* Mobile: icon + label side by side */}
             <div className="flex items-center gap-2 lg:hidden">
               <UserIcon className="h-[24px] hidden md:block" />
-              <div className="text-[10px] sm:text-xs md:text-sm font-bold whitespace-nowrap">Sign In</div>
+              <div className="text-[10px] sm:text-xs md:text-sm font-bold whitespace-nowrap">
+                Sign In
+              </div>
             </div>
           </div>
 
           {/* Returns & Orders — desktop only */}
           <div className="pr-4 pl-4 hidden lg:block">
             <div className="text-xs xl:text-sm cursor-pointer">Returns</div>
-            <div className="text-sm xl:text-base font-bold cursor-pointer">& Orders</div>
+            <div className="text-sm xl:text-base font-bold cursor-pointer">
+              & Orders
+            </div>
           </div>
 
           {/* Cart — always visible */}
@@ -74,7 +76,6 @@ const NavBar = () => {
               <div className="mt-7 text-xs xl:text-sm font-bold">Cart</div>
             </div>
           </Link>
-
         </div>
       </div>
 

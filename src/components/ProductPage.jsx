@@ -30,7 +30,12 @@ const ProductPage = () => {
   }, []);
 
   // Loading State
-  if (!product?.title) return <div className="flex items-center justify-center  h-screen text-6xl animate-spin text-[var(--color-lightBlue)]"><FontAwesomeIcon icon={faSpinner} /></div>;
+  if (!product?.title)
+    return (
+      <div className="flex items-center justify-center  h-screen text-6xl animate-spin text-[var(--color-lightBlue)]">
+        <FontAwesomeIcon icon={faSpinner} />
+      </div>
+    );
 
   return (
     product && (
@@ -86,7 +91,8 @@ const ProductPage = () => {
                 <Link to={"/checkout"}>
                   <button
                     onClick={() => dispatch(addToCart(addQuantityToProduct()))}
-                    className="btn">
+                    className="btn"
+                  >
                     Add to Cart
                   </button>
                 </Link>

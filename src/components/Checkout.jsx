@@ -18,8 +18,13 @@ const Checkout = () => {
     )
   );
   const dispatch = useDispatch();
+  // If no products in cart, tell the user
   if (products.length === 0) {
-    return <h1 className="text-center text-2xl pt-10 text-[var( --color-lightBlue)]">There are no items in your cart. :-( </h1>;
+    return (
+      <h1 className="text-center text-2xl pt-10 text-[var( --color-lightBlue)]">
+        There are no items in your cart. :-({" "}
+      </h1>
+    );
   }
 
   return (
@@ -108,7 +113,7 @@ const Checkout = () => {
                 {US_CURRENCY.format(subtotal)}
               </span>
             </div>
-            <button className="btn disabled">Proceed to Checkout</button>
+            <button className="btn cursor-not-allowed" disabled>Proceed to Checkout</button>
           </div>
         </div>
       </div>

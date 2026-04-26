@@ -6,12 +6,13 @@
     }
 }
 
+/* Changing swiper color button to gray */
 .swiper .swiper-button-next,
 .swiper .swiper-button-prev {
   color: var(--color-background);
 }
 
-
+/* Amazon color theme */
 @theme {
   --color-primary: #131921;
   --color-background: #EAEDED;

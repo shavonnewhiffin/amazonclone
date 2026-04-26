@@ -13,21 +13,18 @@ const SearchResults = () => {
     const category = searchParams.get("category");
 
     callAPI(`data/search.json`).then((searchResults) => {
-        const baseProducts =
-        category === "All"
-          ? searchResults["All"]
-          : searchResults[category];
-      
+      const baseProducts =
+        category === "All" ? searchResults["All"] : searchResults[category];
+
       const results = searchTerm
         ? baseProducts.filter((product) =>
             product.title.toLowerCase().includes(searchTerm.toLowerCase())
           )
         : baseProducts;
-      
+
       setProducts(results);
-      });
-    ;
-  }
+    });
+  };
   useEffect(() => {
     getSearchResults();
   }, [searchParams]);
