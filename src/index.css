@@ -6,6 +6,12 @@
     }
 }
 
+.swiper .swiper-button-next,
+.swiper .swiper-button-prev {
+  color: var(--color-background);
+}
+
+
 @theme {
   --color-primary: #131921;
   --color-background: #EAEDED;
@@ -15,4 +21,5 @@
 
 body {
     overflow-x: hidden;
+    background-color: var(--color-background);
   }

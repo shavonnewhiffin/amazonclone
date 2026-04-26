@@ -5,6 +5,8 @@ import { ProductDetails } from "./";
 import { US_CURRENCY } from "../utils/Constants";
 import { callAPI } from "../utils/CallApi";
 import { addToCart } from "../redux/cartSlice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -27,7 +29,8 @@ const ProductPage = () => {
     getProduct();
   }, []);
 
-  if (!product?.title) return <h1>Loading Product ...</h1>;
+  // Loading State
+  if (!product?.title) return <div className="flex items-center justify-center  h-screen text-6xl animate-spin text-[var(--color-lightBlue)]"><FontAwesomeIcon icon={faSpinner} /></div>;
 
   return (
     product && (

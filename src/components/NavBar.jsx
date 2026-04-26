@@ -13,7 +13,7 @@ const NavBar = () => {
       <div className="flex bg-[var(--color-primary)] text-white h-[60px]">
 
         {/* NAV LEFT: Logo + Delivery location */}
-        <div className="flex items-center m-4">
+        <div className="flex items-center m-1 md:m-4 flex-shrink-0">
           <Link to={"/"}>
           <figure className="flex-shrink-0 mr-1">
             <img

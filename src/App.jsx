@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { HomePage, NavBar, Checkout, SearchResults, ProductPage } from './components'
+import { HomePage, NavBar, Checkout, SearchResults, ProductPage, Footer } from './components'
 
 function App() {
 
@@ -14,6 +14,7 @@ function App() {
     <Route path="/product/:id" element={<ProductPage/>}/>
     <Route path="/checkout" element={<Checkout/>}/>
   </Routes>
+  <Footer />
   </BrowserRouter>  
 )
 }

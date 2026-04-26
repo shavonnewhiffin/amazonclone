@@ -93,7 +93,7 @@ const HomePage = () => {
         </div>
 
         {/* FOOTER BANNER */}
-        <div className="mt-4 lg:mt-8 px-4">
+        <div className="mt-4 lg:mt-8 px-4 mb-2">
           <img
             src={banners.banner1}
             alt=""
